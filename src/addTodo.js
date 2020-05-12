@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure()
 class Todo extends Component{
     
     state = {
@@ -20,7 +22,7 @@ class Todo extends Component{
             })
         }
         else{
-            // alert.show('Oh look, an alert!')
+            toast.info('You need to add a task first !',{position: toast.POSITION.TOP_RIGHT,autoClose:3000})
         }
     }
     render(){

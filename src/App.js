@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddTodo from "./addTodo"
 import Todos from "./listTodo"
+import swal from 'sweetalert';
 
 class App extends Component {
   state = {
@@ -23,11 +24,27 @@ class App extends Component {
     })
   }
   deleteTodo = (key) => {
-    let todo = this.state.todo.filter((t) => t.key !== key);
-    
-    this.setState({
-      todo
+    swal({
+      title: "Are you sure?",
+      text: "You're trying to delete a task !",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
     })
+    .then((willDelete) => {
+      if (willDelete) {
+        let todo = this.state.todo.filter((t) => t.key !== key);
+    
+        this.setState({
+          todo
+        })
+        swal("Poof! Your Task has been deleted!", {
+          icon: "success",
+        });
+      } else {
+        swal("Your Task is safe !");
+      }
+    });
   }
   render(){
     return (
