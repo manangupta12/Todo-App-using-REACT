@@ -28,7 +28,7 @@ class App extends Component {
       title: "Are you sure?",
       text: "You're trying to delete a task !",
       icon: "warning",
-      buttons: true,
+      buttons: ["Cancel", "Delete"],
       dangerMode: true,
     })
     .then((willDelete) => {
@@ -38,11 +38,11 @@ class App extends Component {
         this.setState({
           todo
         })
-        swal("Poof! Your Task has been deleted!", {
+        swal("Poof! Your task has been deleted!", {
           icon: "success",
         });
       } else {
-        swal("Your Task is safe !");
+        swal("Your task is safe !");
       }
     });
   }
