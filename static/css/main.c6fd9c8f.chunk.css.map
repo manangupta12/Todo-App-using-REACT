@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,WACI,gBACJ,CACA,OACI,WACJ","file":"main.c6fd9c8f.chunk.css","sourcesContent":[".container {\n    margin-top: 100px;\n}\nbutton {\n    float: right;\n}"]}
