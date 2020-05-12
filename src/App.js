@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import AddTodo from "./addTodo"
+import Todos from "./listTodo"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    todo : [
+        {
+          content : "Learn React Native !",
+          key : 1
+        },
+        {
+          content : "Learn Django !",
+          key : 2
+        }
+      ]
+  }
+  addTodo = (todo) => {
+    var todoCopy = [...this.state.todo,todo]
+    
+    this.setState({
+      todo : todoCopy
+    })
+  }
+  deleteTodo = (key) => {
+    let todo = this.state.todo.filter((t) => t.key !== key);
+    
+    this.setState({
+      todo
+    })
+  }
+  render(){
+    return (
+      <div className="App">
+        <div className = "container">
+          <Todos todos = {this.state.todo} deleteTodo = {this.deleteTodo} />
+          <AddTodo addTodo = {this.addTodo} />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
